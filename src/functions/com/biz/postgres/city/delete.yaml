@@ -1,0 +1,11 @@
+summary: Delete City
+tasks:
+  - id: postgres_city_delete
+    fn: com.gs.datastore
+    args:
+      datasource: postgres
+      data:
+        where:
+          id: <% parseInt(inputs.params.id) %>
+      config:
+        method: City.delete

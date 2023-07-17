@@ -1,0 +1,88 @@
+# ONE
+/postgres/city/:id.http.get:
+  summary: Fetch City
+  description: Fetch City from database
+  fn: com.biz.postgres.city.one
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# CREATE
+/postgres/city.http.post:
+  summary: Create a new City
+  description: Create City from database
+  fn: com.biz.postgres.city.create
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/City'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# UPDATE
+/postgres/city/:id.http.put:
+  summary: Update a City
+  description: Update City from database
+  fn: com.biz.postgres.city.update
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/postgres/City'
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# DELETE
+/postgres/city/:id.http.delete:
+  summary: Delete a City
+  description: Delete City from database
+  fn: com.biz.postgres.city.delete
+  params:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
+
+# SEARCH
+/postgres/city/search.http.post:
+  summary: Fetch multiple City
+  description: Fetch multiple City from database
+  fn: com.biz.postgres.city.search
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
+
